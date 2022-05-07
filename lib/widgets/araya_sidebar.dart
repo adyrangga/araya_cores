@@ -21,32 +21,35 @@ class ArayaSidebar extends StatelessWidget {
     if (screenSize.isMobile() || screenSize.isMobileLS()) {
       return const SizedBox();
     }
-    return Container(
-      width: ArayaConstants.appDrawerWidth,
-      decoration: BoxDecoration(
-        color: backgroundColor ?? Theme.of(context).cardColor,
-        boxShadow: [
-          BoxShadow(
-            color: Theme.of(context).shadowColor.withOpacity(0.25),
-            blurRadius: 8,
-          )
-        ],
-      ),
-      child: Flex(
-        direction: Axis.vertical,
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          ListView(
-            primary: false,
-            shrinkWrap: true,
-            physics: const ScrollPhysics(),
-            padding: const EdgeInsets.all(8.0),
-            children: children,
-          ),
-          const ArayaTileSwitchTheme(),
-        ],
-      ),
-    );
+    return LayoutBuilder(builder: (context, constraints) {
+      return Container(
+        width: ArayaConstants.appDrawerWidth,
+        height: constraints.maxHeight,
+        decoration: BoxDecoration(
+          color: Theme.of(context).canvasColor,
+          boxShadow: [
+            BoxShadow(
+              color: Theme.of(context).shadowColor.withOpacity(0.5),
+              blurRadius: 4,
+            )
+          ],
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            Expanded(
+              child: ListView(
+                primary: false,
+                shrinkWrap: true,
+                physics: const ScrollPhysics(),
+                padding: const EdgeInsets.all(8.0),
+                children: children,
+              ),
+            ),
+            const ArayaTileSwitchTheme(),
+          ],
+        ),
+      );
+    });
   }
 }
