@@ -22,32 +22,26 @@ class ArayaSidebar extends StatelessWidget {
       return const SizedBox();
     }
     return LayoutBuilder(builder: (context, constraints) {
-      return Container(
-        width: ArayaConstants.appDrawerWidth,
-        height: constraints.maxHeight,
-        decoration: BoxDecoration(
-          color: Theme.of(context).canvasColor,
-          boxShadow: [
-            BoxShadow(
-              color: Theme.of(context).shadowColor.withOpacity(0.5),
-              blurRadius: 4,
-            )
-          ],
-        ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            Expanded(
-              child: ListView(
-                primary: false,
-                shrinkWrap: true,
-                physics: const ScrollPhysics(),
-                padding: const EdgeInsets.all(8.0),
-                children: children,
+      return Material(
+        elevation: 4,
+        child: SizedBox(
+          width: ArayaConstants.appDrawerWidth,
+          height: constraints.maxHeight,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              Expanded(
+                child: ListView(
+                  primary: false,
+                  shrinkWrap: true,
+                  physics: const ScrollPhysics(),
+                  padding: EdgeInsets.zero,
+                  children: [],
+                ),
               ),
-            ),
-            const ArayaTileSwitchTheme(),
-          ],
+              const ArayaTileSwitchTheme(),
+            ],
+          ),
         ),
       );
     });
