@@ -15,7 +15,7 @@ class ArayaScaffold extends StatelessWidget {
     this.appBar,
     this.appBarTitle = ArayaConstants.appsName,
     this.sideBar,
-    this.drawer = const ArayaDrawer(),
+    this.drawer,
     this.bodyBuilder,
     this.body,
     this.backgroundColor,
