@@ -55,8 +55,7 @@ class ArayaScaffold extends StatelessWidget {
   }
 
   _buildAppbar(BuildContext context) {
-    if (appBar == null) return null;
-
-    return AppBar(title: Text(appBarTitle));
+    if (appBar == null) return AppBar(title: Text(appBarTitle));
+    return appBar;
   }
 }
