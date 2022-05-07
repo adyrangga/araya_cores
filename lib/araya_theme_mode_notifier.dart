@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 import 'araya_prefs.dart';
 
-class ThemeModeNotifier with ChangeNotifier, DiagnosticableTreeMixin {
+class ArayaThemeModeNotifier with ChangeNotifier, DiagnosticableTreeMixin {
   ThemeMode _theme = ThemeMode.light;
 
   ThemeMode get theme {

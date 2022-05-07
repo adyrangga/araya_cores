@@ -5,7 +5,7 @@ import 'araya_constants.dart';
 
 /// abstact class for changes application title.
 /// call setAppsDesc method inner build method before returns widget.
-abstract class AppsDescription {
+abstract class ArayaAppsDescription {
   @mustCallSuper
   void setAppsDesc(
     BuildContext context, [

@@ -7,26 +7,28 @@ import 'araya_scroll_view.dart';
 class ArayaScaffold extends StatelessWidget {
   /// Creates a widget that avoids operating system interfaces.
   ///
-  /// choose one of [bodyBuilder] or [tabBarVIewBody] to build body widget.
+  /// choose one of [bodyBuilder] or [body] to build body widget.
   const ArayaScaffold({
     Key? key,
     this.appBar,
     this.appBarTitle = ArayaConstants.appsName,
-    this.sideBar = const SizedBox(),
+    this.sideBar,
     this.drawer,
     this.bodyBuilder,
-    this.tabBarVIewBody,
+    this.body,
     this.backgroundColor,
+    this.scrollController,
   }) : super(key: key);
 
   final PreferredSizeWidget? appBar;
   final String appBarTitle;
-  final Widget sideBar;
+  final Widget? sideBar;
   final Widget? drawer;
-  final Widget Function(BuildContext cContext, BoxConstraints cConstraints)?
+  final Widget Function(BuildContext context, BoxConstraints constraints)?
       bodyBuilder;
-  final Widget? tabBarVIewBody;
+  final Widget? body;
   final Color? backgroundColor;
+  final ScrollController? scrollController;
 
   @override
   Widget build(BuildContext context) {
@@ -38,13 +40,16 @@ class ArayaScaffold extends StatelessWidget {
             color: backgroundColor,
             height: constraints.maxHeight,
             width: constraints.maxWidth,
-            child: tabBarVIewBody ??
+            child: body ??
                 Row(
                   mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    sideBar,
-                    ArayaScrollView(childBuilder: bodyBuilder!),
+                    sideBar ?? const SizedBox(),
+                    ArayaScrollView(
+                      scrollController: scrollController,
+                      child: bodyBuilder!(context, constraints),
+                    ),
                   ],
                 ),
           ),

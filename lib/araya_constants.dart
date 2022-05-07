@@ -11,4 +11,8 @@ class ArayaConstants {
 
   /// default appBar bottom widget hright 46.0.
   static const double appBarBottomTabBarHeight = 46.0;
+
+  /// araya tile switch button theme
+  static const darkMode = 'Dark Mode';
+  static const toggleDarkMode = 'Toggle Dark Mode';
 }
