@@ -36,7 +36,7 @@ class ArayaSidebar extends StatelessWidget {
                   shrinkWrap: true,
                   physics: const ScrollPhysics(),
                   padding: EdgeInsets.zero,
-                  children: [],
+                  children: children,
                 ),
               ),
               const ArayaTileSwitchTheme(),
