@@ -10,13 +10,11 @@ class ArayaSidebar extends StatelessWidget {
     Key? key,
     this.children = const [],
     this.backgroundColor,
-    this.scrollController,
   }) : super(key: key);
 
   final ScreenSize screenSize;
   final List<Widget> children;
   final Color? backgroundColor;
-  final ScrollController? scrollController;
 
   @override
   Widget build(BuildContext context) {
