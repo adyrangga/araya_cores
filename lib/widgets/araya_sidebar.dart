@@ -3,19 +3,18 @@ import 'package:flutter/material.dart';
 
 import '../araya_constants.dart';
 import '../screen_size.dart';
-import 'araya_scroll_view.dart';
 
 class ArayaSidebar extends StatelessWidget {
   const ArayaSidebar(
     this.screenSize, {
     Key? key,
-    required this.child,
+    this.children = const [],
     this.backgroundColor,
     this.scrollController,
   }) : super(key: key);
 
   final ScreenSize screenSize;
-  final Widget child;
+  final List<Widget> children;
   final Color? backgroundColor;
   final ScrollController? scrollController;
 
@@ -40,7 +39,11 @@ class ArayaSidebar extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          ArayaScrollView(scrollController: scrollController, child: child),
+          ListView(
+            primary: false,
+            shrinkWrap: true,
+            children: children,
+          ),
           const ArayaTileSwitchTheme(),
         ],
       ),
