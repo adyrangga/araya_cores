@@ -7,7 +7,6 @@ class ArayaPrefs {
   /// please initialize SharedPreferences on runApp function
   static Future<SharedPreferences> instance() async {
     prefs = await SharedPreferences.getInstance();
-    debugPrint('SP initialize $prefs');
     return prefs;
   }
 

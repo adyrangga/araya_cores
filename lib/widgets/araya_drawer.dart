@@ -39,7 +39,7 @@ class ArayaDrawer extends StatelessWidget {
                   primary: false,
                   shrinkWrap: true,
                   physics: const ScrollPhysics(),
-                  padding: const EdgeInsets.all(8.0),
+                  padding: EdgeInsets.zero,
                   children: children,
                 ),
               ),
