@@ -3,14 +3,18 @@ import 'package:flutter/material.dart';
 import '../araya_constants.dart';
 import 'araya_scroll_view.dart';
 
+/// Creates a widget that avoids operating system interfaces.
 class ArayaScaffold extends StatelessWidget {
+  /// Creates a widget that avoids operating system interfaces.
+  ///
+  /// choose one of [bodyBuilder] or [tabBarVIewBody] to build body widget.
   const ArayaScaffold({
     Key? key,
     this.appBar,
     this.appBarTitle = ArayaConstants.appsName,
     this.sideBar = const SizedBox(),
     this.drawer,
-    this.childBuilder,
+    this.bodyBuilder,
     this.tabBarVIewBody,
     this.backgroundColor,
   }) : super(key: key);
@@ -20,7 +24,7 @@ class ArayaScaffold extends StatelessWidget {
   final Widget sideBar;
   final Widget? drawer;
   final Widget Function(BuildContext cContext, BoxConstraints cConstraints)?
-      childBuilder;
+      bodyBuilder;
   final Widget? tabBarVIewBody;
   final Color? backgroundColor;
 
@@ -40,7 +44,7 @@ class ArayaScaffold extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     sideBar,
-                    ArayaScrollView(childBuilder: childBuilder!),
+                    ArayaScrollView(childBuilder: bodyBuilder!),
                   ],
                 ),
           ),
