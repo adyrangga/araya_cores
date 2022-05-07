@@ -41,7 +41,7 @@ class ArayaScaffold extends StatelessWidget {
             child: tabBarVIewBody ??
                 Row(
                   mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
                     sideBar,
                     ArayaScrollView(childBuilder: bodyBuilder!),

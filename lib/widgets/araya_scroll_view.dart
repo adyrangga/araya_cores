@@ -4,24 +4,24 @@ class ArayaScrollView extends StatelessWidget {
   const ArayaScrollView({
     Key? key,
     required this.childBuilder,
-    this.margin = const EdgeInsets.all(8.0),
+    this.padding = const EdgeInsets.all(8.0),
     this.scrollController,
   }) : super(key: key);
 
   final Widget Function(BuildContext cContext, BoxConstraints cConstraints)
       childBuilder;
-  final EdgeInsetsGeometry margin;
+  final EdgeInsetsGeometry padding;
   final ScrollController? scrollController;
 
   @override
   Widget build(BuildContext context) => LayoutBuilder(
-        builder: (context, constraints) => Expanded(
-          child: SingleChildScrollView(
-            controller: scrollController,
-            child: Padding(
-              padding: margin,
-              child: childBuilder(context, constraints),
-            ),
+        builder: (context, constraints) => SingleChildScrollView(
+          controller: scrollController,
+          child: Container(
+            height: constraints.maxHeight,
+            width: constraints.maxWidth,
+            padding: padding,
+            child: childBuilder(context, constraints),
           ),
         ),
       );
