@@ -42,6 +42,8 @@ class ArayaSidebar extends StatelessWidget {
           ListView(
             primary: false,
             shrinkWrap: true,
+            physics: const ScrollPhysics(),
+            padding: const EdgeInsets.all(8.0),
             children: children,
           ),
           const ArayaTileSwitchTheme(),
