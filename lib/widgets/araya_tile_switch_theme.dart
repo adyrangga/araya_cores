@@ -9,7 +9,13 @@ class ArayaTileSwitchTheme extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => ListTile(
-        title: const Text(ArayaConstants.darkMode),
+        title: Text(
+          ArayaConstants.darkMode,
+          style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                fontSize: 14.0,
+                fontWeight: FontWeight.w600,
+              ),
+        ),
         trailing: Tooltip(
           message: ArayaConstants.toggleDarkMode,
           child: Switch(

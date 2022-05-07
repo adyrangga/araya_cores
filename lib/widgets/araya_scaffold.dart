@@ -1,6 +1,8 @@
+import 'package:araya_cores/widgets/araya_drawer.dart';
 import 'package:flutter/material.dart';
 
 import '../araya_constants.dart';
+import '../screen_size.dart';
 import 'araya_scroll_view.dart';
 
 /// Creates a widget that avoids operating system interfaces.
@@ -13,7 +15,7 @@ class ArayaScaffold extends StatelessWidget {
     this.appBar,
     this.appBarTitle = ArayaConstants.appsName,
     this.sideBar,
-    this.drawer,
+    this.drawer = const ArayaDrawer(),
     this.bodyBuilder,
     this.body,
     this.backgroundColor,
@@ -32,6 +34,7 @@ class ArayaScaffold extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    ScreenSize screenSize = ScreenSize(context);
     return Scaffold(
       appBar: _buildAppbar(context),
       body: SafeArea(
@@ -55,7 +58,7 @@ class ArayaScaffold extends StatelessWidget {
           ),
         ),
       ),
-      drawer: drawer,
+      drawer: screenSize.isMobile() || screenSize.isMobileLS() ? drawer : null,
     );
   }
 
