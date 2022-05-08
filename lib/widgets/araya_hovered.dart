@@ -16,11 +16,13 @@ class ArayaHovered extends StatelessWidget {
   const ArayaHovered({
     Key? key,
     required this.child,
-    this.onTap,
+    required this.onTap,
     this.visibled = true,
     this.disabled = false,
     this.readOnly = false,
+    this.margin,
     this.padding,
+    this.tooltip,
   }) : super(key: key);
 
   final Widget child;
@@ -28,16 +30,21 @@ class ArayaHovered extends StatelessWidget {
   final bool visibled;
   final bool disabled;
   final bool readOnly;
+  final EdgeInsetsGeometry? margin;
   final EdgeInsetsGeometry? padding;
+  final String? tooltip;
 
   @override
-  Widget build(BuildContext context) => InkWell(
-        onTap: disabled || readOnly ? null : onTap,
-        child: visibled
-            ? Container(
-                padding: padding,
-                child: child,
-              )
-            : const SizedBox(),
+  Widget build(BuildContext context) => Container(
+        margin: margin,
+        child: InkWell(
+          onTap: disabled || readOnly ? null : onTap,
+          child: visibled
+              ? Container(
+                  padding: padding,
+                  child: Tooltip(message: tooltip, child: child),
+                )
+              : const SizedBox(),
+        ),
       );
 }
