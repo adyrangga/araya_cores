@@ -1,4 +1,4 @@
-import 'package:araya_cores/widgets/araya_drawer.dart';
+import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:flutter/material.dart';
 
 import '../araya_constants.dart';
@@ -36,7 +36,7 @@ class ArayaScaffold extends StatelessWidget {
   Widget build(BuildContext context) {
     ScreenSize screenSize = ScreenSize(context);
     return Scaffold(
-      appBar: _buildAppbar(context),
+      appBar: _buildAppbar(context, screenSize),
       body: SafeArea(
         child: LayoutBuilder(
           builder: (context, constraints) => Container(
@@ -62,8 +62,14 @@ class ArayaScaffold extends StatelessWidget {
     );
   }
 
-  _buildAppbar(BuildContext context) {
-    if (appBar == null) return AppBar(title: Text(appBarTitle));
+  _buildAppbar(BuildContext context, ScreenSize screenSize) {
+    if (appBar == null) {
+      return AppBar(
+        title: Text(appBarTitle),
+        automaticallyImplyLeading:
+            !(kIsWeb && screenSize.width > screenSize.maxMobileLSWidth),
+      );
+    }
     return appBar;
   }
 }
