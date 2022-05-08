@@ -66,7 +66,7 @@ class ArayaScaffold extends StatelessWidget {
     if (appBar == null) {
       return AppBar(
         title: Text(appBarTitle),
-        automaticallyImplyLeading: !((kIsWeb && drawer == null) &&
+        automaticallyImplyLeading: !((kIsWeb && drawer != null) &&
             screenSize.width > screenSize.maxMobileLSWidth),
       );
     }
