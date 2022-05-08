@@ -31,6 +31,7 @@ class ArayaImageNetwork extends StatelessWidget {
     return Container(
       margin: margin,
       child: ArayaHovered(
+        onTap: onTap,
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
