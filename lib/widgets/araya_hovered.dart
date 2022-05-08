@@ -22,7 +22,7 @@ class ArayaHovered extends StatelessWidget {
     this.readOnly = false,
     this.margin,
     this.padding,
-    this.tooltip,
+    this.tooltip = '',
   }) : super(key: key);
 
   final Widget child;
@@ -32,7 +32,7 @@ class ArayaHovered extends StatelessWidget {
   final bool readOnly;
   final EdgeInsetsGeometry? margin;
   final EdgeInsetsGeometry? padding;
-  final String? tooltip;
+  final String tooltip;
 
   @override
   Widget build(BuildContext context) => Container(
