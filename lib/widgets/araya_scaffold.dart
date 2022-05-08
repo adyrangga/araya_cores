@@ -74,9 +74,10 @@ class ArayaScaffold extends StatelessWidget {
       final bool hasDrawer = drawer != null;
       return AppBar(
         title: Text(appBarTitle),
-        automaticallyImplyLeading: (forceImplyLeading && hasDrawer) ||
-            ((screenSize.width <= screenSize.maxMobileLSWidth && hasDrawer) &&
-                (kIsWeb || hasDrawer)),
+        automaticallyImplyLeading: ((kIsWeb || hasDrawer) &&
+                (screenSize.width <= screenSize.maxMobileLSWidth &&
+                    hasDrawer)) ||
+            (forceImplyLeading && hasDrawer),
       );
     }
     return appBar;
