@@ -16,8 +16,10 @@ class ArayaScaffold extends StatelessWidget {
     this.appBarTitle = ArayaConstants.appsName,
     this.sideBar,
     this.drawer,
+    this.forceImplyLeading = false,
     this.bodyBuilder,
     this.body,
+    this.bodyPadding = const EdgeInsets.all(8.0),
     this.backgroundColor,
     this.scrollController,
   }) : super(key: key);
@@ -26,9 +28,13 @@ class ArayaScaffold extends StatelessWidget {
   final String appBarTitle;
   final Widget? sideBar;
   final Widget? drawer;
+
+  /// [forceImplyLeading] force show appBar leading when drawer not null;
+  final bool forceImplyLeading;
   final Widget Function(BuildContext context, BoxConstraints constraints)?
       bodyBuilder;
   final Widget? body;
+  final EdgeInsetsGeometry bodyPadding;
   final Color? backgroundColor;
   final ScrollController? scrollController;
 
@@ -50,6 +56,7 @@ class ArayaScaffold extends StatelessWidget {
                   children: [
                     sideBar ?? const SizedBox(),
                     ArayaScrollView(
+                      padding: bodyPadding,
                       scrollController: scrollController,
                       child: bodyBuilder!(context, constraints),
                     ),
@@ -64,10 +71,12 @@ class ArayaScaffold extends StatelessWidget {
 
   _buildAppbar(BuildContext context, ScreenSize screenSize) {
     if (appBar == null) {
+      final bool hasDrawer = drawer != null;
       return AppBar(
         title: Text(appBarTitle),
-        automaticallyImplyLeading: (kIsWeb || drawer != null) &&
-            (screenSize.width <= screenSize.maxMobileLSWidth && drawer != null),
+        automaticallyImplyLeading: (forceImplyLeading && hasDrawer) ||
+            ((screenSize.width <= screenSize.maxMobileLSWidth && hasDrawer) &&
+                (kIsWeb || hasDrawer)),
       );
     }
     return appBar;
